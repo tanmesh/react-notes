@@ -94,7 +94,11 @@ const RQSuperHeroesPage = () => {
       */
       enabled: false,
       onSuccess: onSuccess,
-      onError: onError
+      onError: onError,
+      select: (data) => {
+        const superHeroeNames = data.data.map((hero) => hero.name);
+        return superHeroeNames;
+      },
     }
   );
 
@@ -117,8 +121,11 @@ const RQSuperHeroesPage = () => {
     <>
       <h2>RQ Super Heroes Page</h2>
       <Button variant="primary" size="sm" onClick={() => refetch()}>Refetch</Button>
-      {data?.data.map((hero) => {
+      {/* {data?.data.map((hero) => {
         return <div key={hero.name}>{hero.name}</div>;
+      })} */}
+      {data?.map((heroName)=> {
+        return <div key={heroName}>{heroName}</div>;
       })}
     </>
   );
