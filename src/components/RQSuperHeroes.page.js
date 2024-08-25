@@ -42,6 +42,19 @@ const RQSuperHeroesPage = () => {
       * If the staleTime is set to 0, the data will be refetched every time the component is rendered.
       */
       staleTime: 3000,
+      /* 
+      * If set to true, the data will be refetched when the component is mounted when the cache is stale.
+      * If set to false, the data will not be refetched when the component is mounted even if the cache is stale.
+      * Default value is true.
+      */
+      refetchOnMount: true,
+      /*
+      * When the windown regains focus, the data will be refetched when the cache is stale.
+      * If set to true, the data will be refetched when the window regains focus when the cache is stale.
+      * If set to false, the data will not be refetched when the window regains focus even if the cache is stale.
+      * Default value is true.
+      */
+      refetchOnWindowFocus: true,
     }
   );
 
