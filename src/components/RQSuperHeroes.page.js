@@ -20,15 +20,28 @@ const RQSuperHeroesPage = () => {
    */
   const { isLoading, data, isError, error, isFetching } = useQuery(
     "superheroes",
-    fetchSuperheroes, 
+    fetchSuperheroes,
     {
       /*
       * cacheTime is the time in milliseconds that the data will be cached in the queryClient instance.
       * We we stay on the same page, after the cacheTime expires, the data will be refetched from the server.
       * If we navigate to other page, the data will be garbage collected after the cacheTime expires.
       * If wenavigate back-and-forth between pages, the data will be refetched from the server.
+      * Default value is 5 minutes.
+      * If the cacheTime is set to 5000, the data will be refetched after 5 seconds.
+      * Status changes from stale to fetching after 5 seconds.
       */
-      cacheTime: 5000, 
+      cacheTime: 5000,
+      /*
+      * staleTime is the time in milliseconds that the cached data will be considered fresh.
+      * It is used when its OK to display stale data while the data is being refetched in the background.
+      * If the data is stale, React Query will refetch the data in the background.
+      * Default value is 0.
+      * If the staleTime is set to 3000, the data will be refetched after 3 seconds.
+      * Status changes from fresh to stale after 3 seconds.
+      * If the staleTime is set to 0, the data will be refetched every time the component is rendered.
+      */
+      staleTime: 3000,
     }
   );
 
