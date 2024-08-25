@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from 'react-bootstrap';
 import { useSuperHeroesData } from "../hooks/useSuperHeroesData";
+import { Link } from "react-router-dom";
 
 const RQSuperHeroesPage = () => {
   /*
@@ -51,11 +52,10 @@ const RQSuperHeroesPage = () => {
     <>
       <h2>RQ Super Heroes Page</h2>
       <Button variant="primary" size="sm" onClick={() => refetch()}>Refetch</Button>
-      {/* {data?.data.map((hero) => {
-        return <div key={hero.name}>{hero.name}</div>;
-      })} */}
-      {data?.map((heroName)=> {
-        return <div key={heroName}>{heroName}</div>;
+      {data?.data.map((hero) => {
+        return <div key={hero.id}>
+          <Link to={`/rq-superhero/${hero.id}`}>{hero.name}</Link>
+        </div>;
       })}
     </>
   );

@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools"; /* Devtools for React Query */
 import HomePage from "./components/Home.page";
+import RQSuperHeroPage from "./components/RQSuperHero.page";
 import SuperHeroesPage from "./components/SuperHeroes.page";
 import RQSuperHeroesPage from "./components/RQSuperHeroes.page";
 import 'bootstrap/dist/css/bootstrap.min.css'; /* Importing Bootstrap CSS */
@@ -32,6 +33,7 @@ function App() {
           <Routes>
             <Route path="/superheroes" element={<SuperHeroesPage />} />
             <Route path="/rq-superheroes" element={<RQSuperHeroesPage />} />
+            <Route path="/rq-superhero/:heroId" element={<RQSuperHeroPage />} />
             <Route path="/" element={<HomePage />} />
           </Routes>
         </div>
