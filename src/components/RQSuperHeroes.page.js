@@ -11,15 +11,33 @@ const RQSuperHeroesPage = () => {
    * useQuery hook takes two arguments:
    * 1. The key which is a unique identifier for the query
    * 2. The function that will be called to fetch the data
+   * 3. The useQuery hook returns an object with isLoading, data, isError, error, and isFetching properties
+   * 4. isLoading is true when the data is being fetched
+   * 5. data is the fetched data
+   * 6. isError is true when the data fetching fails
+   * 7. error is the error object
+   * 8. isFetching is true when the query is fetching data in the background
    */
-  const { isLoading, data, isError, error } = useQuery(
+  const { isLoading, data, isError, error, isFetching } = useQuery(
     "superheroes",
-    fetchSuperheroes
+    fetchSuperheroes, 
+    {
+      /*
+      * cacheTime is the time in milliseconds that the data will be cached in the queryClient instance.
+      * We we stay on the same page, after the cacheTime expires, the data will be refetched from the server.
+      * If we navigate to other page, the data will be garbage collected after the cacheTime expires.
+      * If wenavigate back-and-forth between pages, the data will be refetched from the server.
+      */
+      cacheTime: 5000, 
+    }
   );
 
   /*
    * If the data is still loading, we display a loading message.
    * When the loading fails, React Query retries the request by default.
+   * 
+   * For subsequent requests, React Query will use the cached data instead of making a network request. 
+   * React Query triggers background updates to keep the data fresh.
    */
   if (isLoading) {
     return <h2>Loading...</h2>;
