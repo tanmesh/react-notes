@@ -55,6 +55,21 @@ const RQSuperHeroesPage = () => {
       * Default value is true.
       */
       refetchOnWindowFocus: true,
+      /*
+      * Also known as Polling, is used to refetch the data at a specific interval. 
+      * It is paused when the window is out of focus.
+      * If set to false, the data will not be refetched at a specific interval.
+      * If set to x, the data will be refetched every x milliseconds.
+      * Default value is false.
+      */
+      refetchInterval: 5000,
+      /*
+      * This is used to refetch the data in the background while the data is being displayed.
+      * If set to true, the data will be refetched in the background while the data is being displayed.
+      * If set to false, the data will not be refetched in the background while the data is being displayed.
+      * Default value is false.
+      */
+      refetchIntervalInBackground: true,
     }
   );
 
