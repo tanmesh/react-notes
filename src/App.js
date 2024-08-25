@@ -4,6 +4,7 @@ import { ReactQueryDevtools } from "react-query/devtools"; /* Devtools for React
 import HomePage from "./components/Home.page";
 import SuperHeroesPage from "./components/SuperHeroes.page";
 import RQSuperHeroesPage from "./components/RQSuperHeroes.page";
+import 'bootstrap/dist/css/bootstrap.min.css'; /* Importing Bootstrap CSS */
 
 const queryClient = new QueryClient();
 

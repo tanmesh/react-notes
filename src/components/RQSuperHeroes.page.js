@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "react-query"; /* Hook we use for all data fetching needs */
 import axios from "axios"; /* Library we use to make HTTP requests */
+import { Button } from 'react-bootstrap';
 
 const fetchSuperheroes = async () => {
   return await axios.get("http://localhost:3004/superheroes");
@@ -17,8 +18,9 @@ const RQSuperHeroesPage = () => {
    * 6. isError is true when the data fetching fails
    * 7. error is the error object
    * 8. isFetching is true when the query is fetching data in the background
+   * 9. refetch is a function that can be called to refetch the data
    */
-  const { isLoading, data, isError, error, isFetching } = useQuery(
+  const { isLoading, data, isError, error, isFetching, refetch } = useQuery(
     "superheroes",
     fetchSuperheroes,
     {
@@ -41,7 +43,7 @@ const RQSuperHeroesPage = () => {
       * Status changes from fresh to stale after 3 seconds.
       * If the staleTime is set to 0, the data will be refetched every time the component is rendered.
       */
-      staleTime: 3000,
+      staleTime: 0,
       /* 
       * If set to true, the data will be refetched when the component is mounted when the cache is stale.
       * If set to false, the data will not be refetched when the component is mounted even if the cache is stale.
@@ -62,14 +64,20 @@ const RQSuperHeroesPage = () => {
       * If set to x, the data will be refetched every x milliseconds.
       * Default value is false.
       */
-      refetchInterval: 5000,
+      refetchInterval: false,
       /*
       * This is used to refetch the data in the background while the data is being displayed.
       * If set to true, the data will be refetched in the background while the data is being displayed.
       * If set to false, the data will not be refetched in the background while the data is being displayed.
       * Default value is false.
       */
-      refetchIntervalInBackground: true,
+      refetchIntervalInBackground: false,
+      /*
+      * This is used to tell React Query to not refetch the data when the component is mounted.
+      * If set to true, the data will be refetched when the component is mounted.
+      * If set to false, the data will not be refetched when the component is mounted.
+      */
+      enabled: false,
     }
   );
 
@@ -80,7 +88,7 @@ const RQSuperHeroesPage = () => {
    * For subsequent requests, React Query will use the cached data instead of making a network request. 
    * React Query triggers background updates to keep the data fresh.
    */
-  if (isLoading) {
+  if (isLoading || isFetching) {
     return <h2>Loading...</h2>;
   }
 
@@ -91,6 +99,7 @@ const RQSuperHeroesPage = () => {
   return (
     <>
       <h2>RQ Super Heroes Page</h2>
+      <Button variant="primary" size="sm" onClick={() => refetch()}>Refetch</Button>
       {data?.data.map((hero) => {
         return <div key={hero.name}>{hero.name}</div>;
       })}
