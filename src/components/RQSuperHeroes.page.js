@@ -9,6 +9,21 @@ const fetchSuperheroes = async () => {
 
 const RQSuperHeroesPage = () => {
   /*
+  * This function is called when the query is successful in fetching data.
+  * React Query also automatically injects the data into the onSuccess callabck.
+  */
+  const onSuccess = (data) => {
+    console.log("Data fetched successfully, ", data);
+  }
+
+  /*
+  * This function is called when the query encounters errors when fetching data.
+  * React Query also automatically injects the error into the onError callabck.
+  */
+  const onError = (error) => {
+    console.log("Perform side effects when the data fetching fails, ", error);
+  }
+  /*
    * useQuery hook takes two arguments:
    * 1. The key which is a unique identifier for the query
    * 2. The function that will be called to fetch the data
@@ -78,6 +93,8 @@ const RQSuperHeroesPage = () => {
       * If set to false, the data will not be refetched when the component is mounted.
       */
       enabled: false,
+      onSuccess: onSuccess,
+      onError: onError
     }
   );
 
