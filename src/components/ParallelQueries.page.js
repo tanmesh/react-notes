@@ -18,13 +18,17 @@ const fetchFriends = () => {
 * queries in parallel by using multiple useQuery hooks.
 */
 const ParallelQueriesPage = () => {
+    /*
+    * Calling useQuery multiple times during Dynamic Queries is not sufficient.
+    */
+
     /* We use alias to differentiate between values */
     const { data: superHeroesData } = useQuery('superheroes', fetchSuperHeroes)
     const { data: friendsData } = useQuery('friends', fetchFriends)
 
     return (
         <>
-        <div>Parallel Queries Page</div>
+        <h2>Parallel Queries Page</h2>
         <div>
             <h4>Super Heroes</h4>
             {superHeroesData?.data?.map(hero => (

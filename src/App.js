@@ -7,6 +7,7 @@ import SuperHeroesPage from "./components/SuperHeroes.page";
 import RQSuperHeroesPage from "./components/RQSuperHeroes.page";
 import 'bootstrap/dist/css/bootstrap.min.css'; /* Importing Bootstrap CSS */
 import ParallelQueriesPage from "./components/ParallelQueries.page";
+import DynamicParallelQueriesPage from "./components/DynamicParallelQueries.page";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,9 @@ function App() {
               <li>
                 <Link to="/rq-parallel-queries">Parallel Queries</Link>
               </li>
+              <li>
+                <Link to="/rq-dynamic-parallel-queries">Dynamic Parallel Queries</Link>
+              </li>
             </ul>
           </nav>
           <Routes>
@@ -39,6 +43,8 @@ function App() {
             <Route path="/rq-superheroes" element={<RQSuperHeroesPage />} />
             <Route path="/rq-superhero/:heroId" element={<RQSuperHeroPage />} />
             <Route path="/rq-parallel-queries" element={<ParallelQueriesPage />} />
+            {/* Lets mimic a scenario, where the User is passing dynamic list of heroIds */}
+            <Route path="/rq-dynamic-parallel-queries" element={<DynamicParallelQueriesPage heroIds={[1, 3]} />} />
             <Route path="/" element={<HomePage />} />
           </Routes>
         </div>

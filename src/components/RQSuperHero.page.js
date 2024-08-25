@@ -27,7 +27,7 @@ const RQSuperHeroPage = () => {
 
   return (
     <div>
-      Super Hero details for <strong>{data?.name}</strong>
+      <h2>Super Hero details for <strong>{data?.name}</strong></h2>
       <div>
         <strong>Alter Ego:</strong> {data?.alterEgo}
       </div>
