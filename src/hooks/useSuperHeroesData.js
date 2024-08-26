@@ -1,5 +1,6 @@
 import { useQuery } from "react-query"; /* Hook we use for all data fetching needs */
 import axios from "axios"; /* Library we use to make HTTP requests */
+import { useQueryClient, useMutation } from "react-query";
 
 const fetchSuperheroes = async () => {
   return await axios.get("http://localhost:3004/superheroes");
@@ -63,7 +64,7 @@ export const useSuperHeroesData = (onSuccess, onError) => {
       * If set to true, the data will be refetched when the component is mounted.
       * If set to false, the data will not be refetched when the component is mounted.
       */
-      enabled: false,
+      enabled: true,
       onSuccess: onSuccess,
       onError: onError,
       // select: (data) => {
@@ -72,4 +73,18 @@ export const useSuperHeroesData = (onSuccess, onError) => {
       // },
     }
   );
+}
+
+const addSuperHero = async (hero) => {
+  return await axios.post(`http://localhost:3004/superheroes`, hero);
+}
+
+export const useAddSuperHeroData = () => {
+  const queryClient = useQueryClient()
+  return useMutation(addSuperHero, {
+      onSuccess: (data) => {
+          console.log("Data added successfully, ", data);
+          queryClient.invalidateQueries("superheroes");
+      },
+  })
 }

@@ -35,11 +35,3 @@ export const useSuperHeroData = (heroId, onSuccess, onError) => {
         },
     );
 }
-
-const addSuperHero = async (hero) => {
-    return await axios.post(`http://localhost:3004/superheroes`, hero);
-}
-
-export const useAddSuperHeroData = () => {
-    return useMutation(addSuperHero)
-}
