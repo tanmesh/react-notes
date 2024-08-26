@@ -82,9 +82,19 @@ const addSuperHero = async (hero) => {
 export const useAddSuperHeroData = () => {
   const queryClient = useQueryClient()
   return useMutation(addSuperHero, {
-      onSuccess: (data) => {
-          console.log("Data added successfully, ", data);
-          queryClient.invalidateQueries("superheroes");
-      },
+    onSuccess: (data) => {
+      /*
+      * Instead of refetching the data from the server. 
+      * Since we are receiving the data from the server, we can update the cache with the new data.
+      */
+      queryClient.setQueryData("superheroes", (oldData) => {
+        return {
+          ...oldData,
+          data: [...oldData.data, data.data],
+        };
+      });
+      // console.log("Data added successfully, ", data);
+      // queryClient.invalidateQueries("superheroes");
+    },
   })
 }
