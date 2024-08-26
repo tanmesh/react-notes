@@ -1,5 +1,5 @@
 import { useQuery, useQueryClient, useMutation } from 'react-query';
-import axios from 'axios';
+import { request } from '../utils/axios-utils'
 
 /*
 * The function receives various values, out of which we use queryKey.
@@ -7,7 +7,7 @@ import axios from 'axios';
 */
 const fetchSuperHero = async ({ queryKey }) => {
     const heroId = queryKey[1]
-    return await axios.get(`http://localhost:3004/superheroes?id=${heroId}`);
+    return request({ url: `/superheroes?id=${heroId}` });
 }
 
 export const useSuperHeroData = (heroId, onSuccess, onError) => {

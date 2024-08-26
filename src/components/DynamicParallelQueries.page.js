@@ -1,9 +1,9 @@
 import React from 'react'
 import { useQueries } from 'react-query'
-import axios from 'axios'
+import {request } from '../utils/axios-utils'
 
 const fetchSuperHeroe = (heroId) => {
-    return axios.get(`http://localhost:3004/superheroes?id=${heroId}`)
+    return request({ url: `/superheroes?id=${heroId}` });
 }
 const DynamicParallelQueriesPage = ({ heroIds }) => {
     const queryResults = useQueries(
@@ -17,7 +17,7 @@ const DynamicParallelQueriesPage = ({ heroIds }) => {
     console.log({ queryResults })
     return (
         <>
-            <h2>DynamicParallelQueriesPage</h2>
+            <h2>Dynamic Parallel Queries Page</h2>
             {queryResults.map((result, index) => {
                 const { data, error, isLoading } = result
                 return (

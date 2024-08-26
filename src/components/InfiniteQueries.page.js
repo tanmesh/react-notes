@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react'
 import { useInfiniteQuery } from 'react-query'
-import axios from 'axios'
+import { request } from '../utils/axios-utils'
 import { Button, Spinner } from 'react-bootstrap';
 
 const fetchColors = async ({ pageParam = 1 }) => {
-    const response = await axios.get(`http://localhost:3004/colors?_per_page=2&_page=${pageParam}`);
+    const response = await request({ url: `/colors?_per_page=2&_page=${pageParam}` });
     return response.data
 }
 

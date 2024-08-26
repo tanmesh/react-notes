@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react' 
-import axios from 'axios'
+import { request } from '../utils/axios-utils'
 
 export const SuperHeroesPage = () => {
     const [isLoading, setIsLoading] = useState(true)
@@ -9,10 +9,9 @@ export const SuperHeroesPage = () => {
     const [error, setError] = useState('')
   
     useEffect(() => {
-      axios
-        .get('http://localhost:3004/superheroes')
-        .then(res => {
-          setData(res.data)
+      request({ url: `/superheroes` })
+        .then(response => {
+          setData(response.data)
           setIsLoading(false)
         })
     }, [])

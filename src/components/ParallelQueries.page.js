@@ -1,13 +1,13 @@
 import React from 'react'
 import { useQuery } from 'react-query'
-import axios from 'axios'
+import { request } from '../utils/axios-utils'
 
 const fetchSuperHeroes = () => {
-    return axios.get('http://localhost:3004/superheroes')
+    return request({ url: `/superheroes` });
 }
 
 const fetchFriends = () => {
-    return axios.get('http://localhost:3004/friends')
+    return request({ url: `/friends` });
 }
 
 /*
@@ -28,17 +28,17 @@ const ParallelQueriesPage = () => {
 
     return (
         <>
-        <h2>Parallel Queries Page</h2>
-        <div>
-            <h4>Super Heroes</h4>
-            {superHeroesData?.data?.map(hero => (
-                <div key={hero.id}>{hero.name}</div>
-            ))}
-            <h4>Friends</h4>
-            {friendsData?.data?.map(friend => (
-                <div key={friend.id}>{friend.name}</div>
-            ))}
-        </div>
+            <h2>Parallel Queries Page</h2>
+            <div>
+                <h4>Super Heroes</h4>
+                {superHeroesData?.data?.map(hero => (
+                    <div key={hero.id}>{hero.name}</div>
+                ))}
+                <h4>Friends</h4>
+                {friendsData?.data?.map(friend => (
+                    <div key={friend.id}>{friend.name}</div>
+                ))}
+            </div>
         </>
     )
 }

@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { useQuery } from 'react-query'
-import axios from 'axios'
+import { request } from '../utils/axios-utils'
 import { Button } from 'react-bootstrap'
 import { ArrowRight, ArrowLeft } from 'react-bootstrap-icons';
 
 
 const fetchColors = async (pageNumber) => {
-    return await axios.get(`http://localhost:3004/colors?_per_page=2&_page=${pageNumber}`);
+    return await request({ url: `/colors?_per_page=2&_page=${pageNumber}` });
 }
 
 const PaginatedQueriesPage = () => {
@@ -21,7 +21,6 @@ const PaginatedQueriesPage = () => {
         }
     )
 
-    console.log(data)
     return (
         <>
             <h2>Paginated Queries Page</h2>

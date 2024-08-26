@@ -1,9 +1,9 @@
 import { useQuery } from "react-query"; /* Hook we use for all data fetching needs */
-import axios from "axios"; /* Library we use to make HTTP requests */
+import { request } from '../utils/axios-utils' /* Axios instance we created */
 import { useQueryClient, useMutation } from "react-query";
 
 const fetchSuperheroes = async () => {
-  return await axios.get("http://localhost:3004/superheroes");
+  return request({ url: "/superheroes" });
 };
 
 export const useSuperHeroesData = (onSuccess, onError) => {
@@ -76,7 +76,7 @@ export const useSuperHeroesData = (onSuccess, onError) => {
 }
 
 const addSuperHero = async (hero) => {
-  return await axios.post(`http://localhost:3004/superheroes`, hero);
+  return request({url: "/superheroes", method: "POST", data: hero});
 }
 
 export const useAddSuperHeroData = () => {
