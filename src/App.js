@@ -26,7 +26,7 @@ function App() {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/superheroes">Superheroes</Link>
+                <Link to="/superheroes">SuperHeroes</Link>
               </li>
               <li>
                 <Link to="/rq-superheroes">RQ SuperHeroes</Link>
