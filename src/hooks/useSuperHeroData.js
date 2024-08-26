@@ -1,4 +1,4 @@
-import { useQuery, useQueryClient } from 'react-query';
+import { useQuery, useQueryClient, useMutation } from 'react-query';
 import axios from 'axios';
 
 /*
@@ -29,9 +29,17 @@ export const useSuperHeroData = (heroId, onSuccess, onError) => {
             initialData: () => {
                 const hero = queryClient
                     .getQueryData("superheroes")
-                    ?.data?.find(hero => hero.id === parseInt(heroId))
+                    ?.data?.find(hero => hero.id === heroId)
                 return hero ? { data: hero } : undefined
             }
         },
     );
+}
+
+const addSuperHero = async (hero) => {
+    return await axios.post(`http://localhost:3004/superheroes`, hero);
+}
+
+export const useAddSuperHeroData = () => {
+    return useMutation(addSuperHero)
 }

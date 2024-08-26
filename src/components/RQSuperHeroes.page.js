@@ -2,6 +2,8 @@ import React from "react";
 import { Button } from 'react-bootstrap';
 import { useSuperHeroesData } from "../hooks/useSuperHeroesData";
 import { Link } from "react-router-dom";
+import { Formik, Form, Field } from 'formik';
+import { useAddSuperHeroData } from "../hooks/useSuperHeroData";
 
 const RQSuperHeroesPage = () => {
   /*
@@ -33,25 +35,50 @@ const RQSuperHeroesPage = () => {
    */
   const { isLoading, data, isError, error, isFetching, refetch } = useSuperHeroesData(onSuccess, onError);
 
-  /*
-   * If the data is still loading, we display a loading message.
-   * When the loading fails, React Query retries the request by default.
-   * 
-   * For subsequent requests, React Query will use the cached data instead of making a network request. 
-   * React Query triggers background updates to keep the data fresh.
-   */
-  if (isLoading || isFetching) {
-    return <h2>Loading...</h2>;
-  }
+  const { mutate: addSuperHero } = useAddSuperHeroData();
 
-  if (isError) {
-    return <h2>{error.message}</h2>;
+  const handleAddHeroClick = (values) => {
+    const heroData = {
+      name: values.heroName,
+      alterEgo: values.heroAlterEgo,
+    }
+    addSuperHero(heroData);
   }
 
   return (
     <>
       <h2>RQ Super Heroes Page</h2>
+      <h3>Add New Super Hero</h3>
+      <Formik
+        initialValues={{ heroName: '', heroAlterEgo: '' }}
+        onSubmit={(values, actions) => {
+          handleAddHeroClick(values);
+          actions.setSubmitting(false);
+          actions.resetForm();
+        }}
+      >
+        {formik => (
+          <Form>
+            <div className="flex-column">
+              <Field type="text" name="heroName" placeholder="Enter hero Name" />
+              <Field type="text" name="heroAlterEgo" placeholder="Enter hero Alter ego" />
+              <Button type="submit" variant="primary" size="sm" disabled={formik.isSubmitting}>Add</Button>
+            </div>
+          </Form>
+        )}
+      </Formik>
+      <h3>Super Heroes List</h3>
       <Button variant="primary" size="sm" onClick={() => refetch()}>Refetch</Button>
+      {/*
+          * If the data is still loading, we display a loading message.
+          * When the loading fails, React Query retries the request by default.
+          *
+          * For subsequent requests, React Query will use the cached data instead of making a network request.
+          * React Query triggers background updates to keep the data fresh.
+          */}
+      {isLoading && <div>Loading...</div>}
+      {isFetching && <div>Fetching...</div>}
+      {isError && <div>Error: {error}</div>}
       {data?.data.map((hero) => {
         return <div key={hero.id}>
           <Link to={`/rq-superhero/${hero.id}`}>{hero.name}</Link>
