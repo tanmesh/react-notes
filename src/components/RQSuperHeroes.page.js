@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap';
 import { useSuperHeroesData, useAddSuperHeroData } from "../hooks/useSuperHeroesData";
 import { Link } from "react-router-dom";
 import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
 
 const RQSuperHeroesPage = () => {
   /*
@@ -55,6 +56,12 @@ const RQSuperHeroesPage = () => {
           actions.setSubmitting(false);
           actions.resetForm();
         }}
+        validationSchema={
+          Yup.object().shape({
+            heroName: Yup.string().required('Hero Name is required'),
+            heroAlterEgo: Yup.string().required('Hero Alter Ego is required'),
+          })
+        }
       >
         {formik => (
           <Form>
