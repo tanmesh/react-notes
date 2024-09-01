@@ -23,3 +23,5 @@
 
 ## React Styled Components
 - What are the benefits / features of using this? 
+- What is polymorphic props? 
+    - a single component with polymorphic props can handle multiple scenarios, leading to a more consistent and predictable codebase.

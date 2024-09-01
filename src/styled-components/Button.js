@@ -18,3 +18,11 @@ export const StyledButton = styled.button`
         cursor: not-allowed;
     }
 `
+
+/**
+ * Extending the StyledButton component to create a new component.
+ */
+export const FancyButton = styled(StyledButton)`
+    background-image: linear-gradient(to right, #f6d365 0%, #fda085 100%);
+    border: none;
+`
