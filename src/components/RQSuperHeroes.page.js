@@ -3,7 +3,7 @@ import { useSuperHeroesData, useAddSuperHeroData } from "../hooks/useSuperHeroes
 import { Link } from "react-router-dom";
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import { DarkButton, StyledButton, SubmitButton } from "../styled-components/Button";
+import { DarkButton, SubmitButton } from "../styled-components/Button";
 
 const RQSuperHeroesPage = () => {
   /*

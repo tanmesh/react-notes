@@ -11,7 +11,7 @@ import DynamicParallelQueriesPage from "./components/DynamicParallelQueries.page
 import DependedQueriesPage from "./components/DependedQueries.page";
 import PaginatedQueriesPage from "./components/PaginatedQueries.page";
 import InfiniteQueriesPage from "./components/InfiniteQueries.page";
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider, createGlobalStyle } from "styled-components";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +27,13 @@ function App() {
       text: '#000'
     }
   };
+
+  const GlobalStyle = createGlobalStyle`
+    button {
+      font-family: 'Roboto';
+    }
+  `;
+
   const AppContent = () => {
     return (
       <div>
@@ -79,6 +86,7 @@ function App() {
  */
   return (
     <ThemeProvider theme={theme}>
+      <GlobalStyle />
       <QueryClientProvider client={queryClient}>
         <Router>
           <AppContent />
