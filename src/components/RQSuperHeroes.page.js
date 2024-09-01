@@ -1,9 +1,9 @@
 import React from "react";
-import { Button } from 'react-bootstrap';
 import { useSuperHeroesData, useAddSuperHeroData } from "../hooks/useSuperHeroesData";
 import { Link } from "react-router-dom";
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import { StyledButton } from "../styled-components/Button";
 
 const RQSuperHeroesPage = () => {
   /*
@@ -68,13 +68,13 @@ const RQSuperHeroesPage = () => {
             <div className="flex-column">
               <Field type="text" name="heroName" placeholder="Enter hero Name" />
               <Field type="text" name="heroAlterEgo" placeholder="Enter hero Alter ego" />
-              <Button type="submit" variant="primary" size="sm" disabled={formik.isSubmitting}>Add</Button>
+              <StyledButton type="submit" disabled={formik.isSubmitting}>Add</StyledButton>
             </div>
           </Form>
         )}
       </Formik>
       <h3>Super Heroes List</h3>
-      <Button variant="primary" size="sm" onClick={() => refetch()}>Refetch</Button>
+      <StyledButton onClick={() => refetch()}>Refetch</StyledButton>
       {/*
           * If the data is still loading, we display a loading message.
           * When the loading fails, React Query retries the request by default.

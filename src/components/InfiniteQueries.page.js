@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { useInfiniteQuery } from 'react-query'
 import { request } from '../utils/axios-utils'
-import { Button, Spinner } from 'react-bootstrap';
+import { StyledButton } from '../styled-components/Button'
 
 const fetchColors = async ({ pageParam = 1 }) => {
     const response = await request({ url: `/colors?_per_page=2&_page=${pageParam}` });
@@ -46,15 +46,12 @@ const InfiniteQueriesPage = () => {
             {isFetching && <div>Fetching...</div>}
             {isError && <div>Error: {error}</div>}
             {data}
-            <Button
-                variant='primary'
-                size="sm"
-                width="100%"
+            <StyledButton
                 disabled={!hasNextPage}
                 onClick={fetchNextPage}
             >
-                {isFetchingNextPage ? <Spinner animation="border" size="sm" /> : 'Load more'}
-            </Button>
+                {isFetchingNextPage ? <spinner animation="border" size="sm" /> : 'Load more'}
+            </StyledButton>
         </>
     )
 }

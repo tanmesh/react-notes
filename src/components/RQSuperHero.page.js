@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSuperHeroData } from '../hooks/useSuperHeroData';
-import { Button } from 'react-bootstrap';
+import { StyledButton } from '../styled-components/Button';
 
 const RQSuperHeroPage = () => {
   const { heroId } = useParams();
@@ -31,7 +31,7 @@ const RQSuperHeroPage = () => {
       <div>
         <strong>Alter Ego:</strong> {data?.alterEgo}
       </div>
-      <Button variant="primary" size="sm" onClick={() => navigate("/rq-superheroes")}>Navigate back</Button>
+      <StyledButton onClick={() => navigate("/rq-superheroes")}>Navigate back</StyledButton>
     </div>
   )
 }

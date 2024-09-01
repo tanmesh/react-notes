@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useQuery } from 'react-query'
 import { request } from '../utils/axios-utils'
-import { Button } from 'react-bootstrap'
 import { ArrowRight, ArrowLeft } from 'react-bootstrap-icons';
+import { StyledButton } from '../styled-components/Button'
 
 
 const fetchColors = async (pageNumber) => {
@@ -33,24 +33,20 @@ const PaginatedQueriesPage = () => {
                 </div>
             )}
             <div>
-                <Button
-                    variant="primary"
-                    size="sm"
+                <StyledButton
                     onClick={() => setPageNumber(pageNumber - 1)}
                     disabled={pageNumber === 1}
                 >
                     <ArrowLeft />
                     Previous page
-                </Button>
-                <Button
-                    variant="primary"
-                    size="sm"
+                </StyledButton>
+                <StyledButton
                     onClick={() => setPageNumber(pageNumber + 1)}
                     disabled={pageNumber === 4}
                 >
                     Next page
                     <ArrowRight />
-                </Button>
+                </StyledButton>
             </div>
         </>
     )
