@@ -3,7 +3,7 @@ import { useSuperHeroesData, useAddSuperHeroData } from "../hooks/useSuperHeroes
 import { Link } from "react-router-dom";
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import { StyledButton, SubmitButton } from "../styled-components/Button";
+import { DarkButton, StyledButton, SubmitButton } from "../styled-components/Button";
 
 const RQSuperHeroesPage = () => {
   /*
@@ -74,7 +74,7 @@ const RQSuperHeroesPage = () => {
         )}
       </Formik>
       <h3>Super Heroes List</h3>
-      <StyledButton onClick={() => refetch()}>Refetch</StyledButton>
+      <DarkButton onClick={() => refetch()}>Refetch</DarkButton>
       {/*
           * If the data is still loading, we display a loading message.
           * When the loading fails, React Query retries the request by default.
