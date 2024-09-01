@@ -24,9 +24,6 @@ const PaginatedQueriesPage = () => {
     return (
         <>
             <h2>Paginated Queries Page</h2>
-            {isLoading && <div>Loading...</div>}
-            {isFetching && <div>Fetching...</div>}
-            {isError && <div>Error: {error}</div>}
             {data?.map(color =>
                 <div key={color.id}>
                     {color.id}. {color.label}
@@ -41,6 +38,7 @@ const PaginatedQueriesPage = () => {
                     Previous page
                 </StyledButton>
                 <StyledButton
+                    variant="outline"
                     onClick={() => setPageNumber(pageNumber + 1)}
                     disabled={pageNumber === 4}
                 >
@@ -48,6 +46,9 @@ const PaginatedQueriesPage = () => {
                     <ArrowRight />
                 </StyledButton>
             </div>
+            {isLoading && <div>Loading...</div>}
+            {isFetching && <div>Fetching...</div>}
+            {isError && <div>Error: {error}</div>}
         </>
     )
 }
