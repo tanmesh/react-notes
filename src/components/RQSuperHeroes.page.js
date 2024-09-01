@@ -3,7 +3,7 @@ import { useSuperHeroesData, useAddSuperHeroData } from "../hooks/useSuperHeroes
 import { Link } from "react-router-dom";
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import { StyledButton } from "../styled-components/Button";
+import { StyledButton, SubmitButton } from "../styled-components/Button";
 
 const RQSuperHeroesPage = () => {
   /*
@@ -68,7 +68,7 @@ const RQSuperHeroesPage = () => {
             <div className="flex-column">
               <Field type="text" name="heroName" placeholder="Enter hero Name" />
               <Field type="text" name="heroAlterEgo" placeholder="Enter hero Alter ego" />
-              <StyledButton type="submit" disabled={formik.isSubmitting}>Add</StyledButton>
+              <SubmitButton type="submit" disabled={formik.isSubmitting}>Add</SubmitButton>
             </div>
           </Form>
         )}

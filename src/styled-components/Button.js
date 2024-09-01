@@ -20,9 +20,26 @@ export const StyledButton = styled.button`
 `
 
 /**
- * Extending the StyledButton component to create a new component.
+ * Extending the StyledButton component to create a new component.  
  */
 export const FancyButton = styled(StyledButton)`
     background-image: linear-gradient(to right, #f6d365 0%, #fda085 100%);
     border: none;
+`
+
+
+export const SubmitButton = styled(StyledButton).attrs({
+    type: 'submit'
+})`
+    background-color: #4caf50;
+    color: #FFF;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px;
+    cursor: pointer;
+    &:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
 `
