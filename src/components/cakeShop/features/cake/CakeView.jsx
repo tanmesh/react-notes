@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyledButton } from '../../../../styled-components/Button'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { ordered, restocked } from './cakeSlice'
 
 const CakeView = () => {
     /**
@@ -8,11 +9,16 @@ const CakeView = () => {
      */
     const numOfCakes = useSelector((state) => state.cake.numOfCakes)
 
+    /**
+     * useDispatch hook returns a reference to the dispatch function from the Redux store.
+     */
+    const dispatch = useDispatch()
+
     return (
         <div>
             <h4>Number of cakes - {numOfCakes}</h4>
-            <StyledButton>Order cake</StyledButton>
-            <StyledButton>Restock cakes</StyledButton>
+            <StyledButton onClick={() => dispatch(ordered())}>Order cake</StyledButton>
+            <StyledButton onClick={() => dispatch(restocked(5))}>Restock cakes</StyledButton>
         </div>
     )
 }
