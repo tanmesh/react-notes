@@ -1,3 +1,4 @@
+import { format } from 'date-fns'
 /**
  * Define the columns for the react-table. Its an array of objects.
  * 
@@ -22,7 +23,8 @@ export const COLUMNS = [
     {
         Header: 'Date of Birth',
         Footer: 'Date of Birth',
-        accessor: 'data_of_birth'
+        accessor: 'data_of_birth',
+        Cell: ({ value }) => { return format(new Date(value), 'dd/MM/yyyy') }
     },
     {
         Header: 'Country',
