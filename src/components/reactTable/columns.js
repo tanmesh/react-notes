@@ -6,26 +6,32 @@
 export const COLUMNS = [
     {
         Header: 'Id',
+        Footer: 'Id',
         accessor: 'id' // 'accessor' is used to associate each column with the row data
     },
     {
         Header: 'First Name',
+        Footer: 'First Name',
         accessor: 'first_name'
     },
     {
         Header: 'Last Name',
+        Footer: 'Last Name',
         accessor: 'last_name'
     },
     {
         Header: 'Date of Birth',
+        Footer: 'Date of Birth',
         accessor: 'data_of_birth'
     },
     {
         Header: 'Country',
+        Footer: 'Country',
         accessor: 'country'
     },
     {
         Header: 'Phone',
+        Footer: 'Phone',
         accessor: 'phone'
     }
 ]

@@ -17,6 +17,7 @@ const ReactTablePage = () => {
         getTableProps, // This function returns the props that need to be added to the table element
         getTableBodyProps, // This function returns the props that need to be added to the table body element
         headerGroups, // This is an array of header groups. Each header group is an object that contains the headers for that group
+        footerGroups, // This is an array of footer groups. Each footer group is an object that contains the footers for that group
         rows, // This is an array of rows. Each row is an object that contains the cells for that row
         prepareRow // This function needs to be called on each row before getting the row props
     } = tableInstance
@@ -54,6 +55,19 @@ const ReactTablePage = () => {
                         })
                     }
                 </tbody>
+                <tfoot>
+                    {
+                        footerGroups.map(footerGroup => (
+                            <tr {...footerGroup.getFooterGroupProps()}>
+                                {
+                                    footerGroup.headers.map(column => (
+                                        <td {...column.getFooterProps()}>{column.render('Footer')}</td>
+                                    ))
+                                }
+                            </tr>
+                        ))
+                    }
+                </tfoot>
             </table>
         </div>
     )
