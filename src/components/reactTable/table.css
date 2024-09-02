@@ -1,7 +1,9 @@
 table {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    width: 800px; /* Set a fixed width */
+    max-width: 100%; /* Ensure it doesn't overflow on smaller screens */
+    margin: 0 auto; /* Center the table */
 }
 
 table td, table th {

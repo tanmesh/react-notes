@@ -1,8 +1,9 @@
 import React, { useMemo } from 'react'
-import { useTable } from 'react-table'
+import { useTable, usePagination } from 'react-table'
 import MOCK_DATA from './MOCK_DATA.json'
 import { COLUMNS } from './columns'
 import './table.css'
+import { StyledButton } from '../../styled-components/Button'
 
 const PaginatedTablePage = () => {
     const columns = useMemo(() => COLUMNS, [])
@@ -11,15 +12,24 @@ const PaginatedTablePage = () => {
     const tableInstance = useTable({
         columns,
         data
-    })
+    },
+        usePagination)
 
     const {
         getTableProps,
         getTableBodyProps,
         headerGroups,
-        rows,
+        page,
+        nextPage, // Helper function to navigate to the next page
+        previousPage, // Helper function to navigate to the previous page
+        canNextPage, // A boolean value indicating if there is a next page
+        canPreviousPage, // A boolean value indicating if there is a previous page
+        pageOptions, // An array of all the page numbers
+        state,
         prepareRow
     } = tableInstance
+
+    const { pageIndex } = state
 
     return (
         <div className='d-flex flex-column align-items-center'>
@@ -40,7 +50,7 @@ const PaginatedTablePage = () => {
                 </thead>
                 <tbody {...getTableBodyProps()}>
                     {
-                        rows.map(row => {
+                        page.map(row => {
                             prepareRow(row)
                             return (
                                 <tr {...row.getRowProps()}>
@@ -55,6 +65,16 @@ const PaginatedTablePage = () => {
                     }
                 </tbody>
             </table>
+            <div>
+                <span>
+                    Page{' '}
+                    <strong>
+                        {pageIndex + 1} of {pageOptions.length}
+                    </strong>{' '}
+                </span>
+                <StyledButton onClick={() => previousPage()} disabled={!canPreviousPage}>Previous</StyledButton>
+                <StyledButton onClick={() => nextPage()} disabled={!canNextPage}>Next</StyledButton>
+            </div>
         </div>
     )
 }

@@ -6,8 +6,8 @@ import styled from 'styled-components';
  * It automatically injects the component's props as an argument.
  */
 export const StyledButton = styled.button`
-    background-color: ${(props) => props.variant === 'outline' ? '#FFF' : '#4caf50'};
-    color: ${(props) => props.variant === 'outline' ? '#4caf50' : '#FFF'};
+    background-color: ${(props) => props.variant === 'outline' ? '#FFF' : '#04AA6D'};
+    color: ${(props) => props.variant === 'outline' ? '#04AA6D' : '#FFF'};
     border: 2px solid transparent;
     border-radius: 5px;
     padding: 5px;
