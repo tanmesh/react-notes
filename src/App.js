@@ -20,6 +20,7 @@ import SortingTablePage from "./components/reactTable/SortingTable.page";
 import FilteringTablePage from "./components/reactTable/FilteringTable.page";
 import PaginatedTablePage from "./components/reactTable/PaginatedTable.page";
 import RowSelection from "./components/reactTable/RowSelection";
+import ColumnOrder from "./components/reactTable/ColumnOrder";
 
 const queryClient = new QueryClient();
 
@@ -131,6 +132,7 @@ function App() {
       { title: 'Filtering Table', iconLabel: '🔍', to: '/filtering-table' },
       { title: 'Paginated Table', iconLabel: '📑', to: '/paginated-table' },
       { title: 'RowSelection', iconLabel: '🔘', to: '/row-selection' },
+      { title: 'Column Order', iconLabel: '🔀', to: '/column-order' },
     ];
 
     return (
@@ -157,6 +159,7 @@ function App() {
               <Route path="/filtering-table" element={<FilteringTablePage />} />
               <Route path="/paginated-table" element={<PaginatedTablePage />} />
               <Route path="/row-selection" element={<RowSelection />} />
+              <Route path="/column-order" element={<ColumnOrder />} />
               <Route path="/" element={<HomePage />} />
             </Routes>
           </div>
