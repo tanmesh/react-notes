@@ -11,6 +11,7 @@ import DynamicParallelQueriesPage from "./components/DynamicParallelQueries.page
 import DependedQueriesPage from "./components/DependedQueries.page";
 import PaginatedQueriesPage from "./components/PaginatedQueries.page";
 import InfiniteQueriesPage from "./components/InfiniteQueries.page";
+import CakeShopPage from "./components/cakeShop/CakeShop.page";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 
 const queryClient = new QueryClient();
@@ -63,6 +64,9 @@ function App() {
             <li>
               <Link to="/rq-infinite-queries">Infinite Queries</Link>
             </li>
+            <li>
+              <Link to="/rtk-cake-shop">Using Redux</Link>
+            </li>
           </ul>
         </nav>
         <Routes>
@@ -75,6 +79,7 @@ function App() {
           <Route path="/rq-dependent-queries" element={<DependedQueriesPage email='tanmesh@example.com' />} />
           <Route path="/rq-paginated-queries" element={<PaginatedQueriesPage />} />
           <Route path="/rq-infinite-queries" element={<InfiniteQueriesPage />} />
+          <Route path="/rtk-cake-shop" element={<CakeShopPage />} />
           <Route path="/" element={<HomePage />} />
         </Routes>
       </div>

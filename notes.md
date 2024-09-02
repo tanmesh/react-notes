@@ -13,15 +13,33 @@
 
 
 ## React Query 
-
-![alt text](./images/image.png)
-> Despite having existing state management lib like useState and useEffect, these are great while working with client state (synchronous) but not great while working server state (asynchronous).  
-
-![alt text](./images/image-1.png)
-> Complex requirements like caching, deduping multiple requests for same data, updating stale data in background, performace optimization, etc can be easily handed using React Query library.
+- What is it ?
+    - Lib for fetching data in a React application.
+- Why we need it ? 
+    - Despite having existing state management lib like useState and useEffect, which are great while working with Client state (synchronous) but are not great while working Server state (asynchronous).  
+    - Complex requirements like caching, deduping multiple requests for same data, updating stale data in background, performace optimization, etc can be easily handed using React Query library.
 
 
 ## React Styled Components
-- What are the benefits / features of using this? 
-- What is polymorphic props? 
+- What are the benefits / features of using this ? 
+- What is polymorphic props ? 
     - a single component with polymorphic props can handle multiple scenarios, leading to a more consistent and predictable codebase.
+
+## Redux 
+- What is it ? 
+    - Predictable state container for JS apps to manage global state 
+- Redux Toolkit is lib for efficient redux development 
+- React-redux is a lib that provides bindings to use React and Redux (Toolkit) together in an application 
+- Three core concepts : 
+    - <img src="./images/image.png" alt="alt text" style="width: 40%;">
+    - Store : holds the state of the application.
+    - Action : describes what happend in the application. 
+    - Reducer : handles the action & describe how to update the state.
+- Three principles : 
+    1. **The global state of the application is stored as an object inside a single store**
+    2. **The only way to change the state is to dispatch an action, an object that describes what happened**
+    3. **To specify how the state tree is updated based on action, you write pure reducers**
+        - Pure reducers are the functions which takes previousState and action, and returns a newState. 
+        - They should not be updating the previous state.
+- <img src="./images/image-1.png" alt="alt text" style="width: 40%;">
+- The entire applicate's state is split into multiple slices, each slice is a reducer.

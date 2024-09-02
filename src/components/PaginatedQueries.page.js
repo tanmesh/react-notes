@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useQuery } from 'react-query'
 import { request } from '../utils/axios-utils'
-import { ArrowRight, ArrowLeft } from 'react-bootstrap-icons';
 import { StyledButton } from '../styled-components/Button'
 
 
@@ -34,7 +33,6 @@ const PaginatedQueriesPage = () => {
                     onClick={() => setPageNumber(pageNumber - 1)}
                     disabled={pageNumber === 1}
                 >
-                    <ArrowLeft />
                     Previous page
                 </StyledButton>
                 <StyledButton
@@ -43,7 +41,6 @@ const PaginatedQueriesPage = () => {
                     disabled={pageNumber === 4}
                 >
                     Next page
-                    <ArrowRight />
                 </StyledButton>
             </div>
             {isLoading && <div>Loading...</div>}
