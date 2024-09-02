@@ -28,11 +28,12 @@ const PaginatedTablePage = () => {
         pageOptions, // An array of all the page numbers
         gotoPage, // Helper function to navigate to a specific page
         pageCount, // The total number of pages
+        setPageSize, // Helper function to set the page size
         state,
         prepareRow
     } = tableInstance
 
-    const { pageIndex } = state
+    const { pageIndex, pageSize } = state
 
     return (
         <div className='d-flex flex-column align-items-center'>
@@ -68,29 +69,51 @@ const PaginatedTablePage = () => {
                     }
                 </tbody>
             </table>
-            <div>
-                <span>
-                    Page{' '}
-                    <strong>
-                        {pageIndex + 1} of {pageOptions.length}
-                    </strong>{' '}
-                </span>
-                <span>
-                    | Go to page:{' '}
-                    <input
-                        type='number'
-                        defaultValue={pageIndex + 1}
-                        onChange={e => {
-                            const pageNumber = e.target.value ? Number(e.target.value) - 1 : 0
-                            gotoPage(pageNumber)
-                        }}
-                        style={{ width: '50px' }}
-                    />
-                </span>
-                <StyledButton onClick={() => gotoPage(0)} disabled={!canPreviousPage}>{'<<'}</StyledButton>
-                <StyledButton onClick={() => previousPage()} disabled={!canPreviousPage}>Previous</StyledButton>
-                <StyledButton onClick={() => nextPage()} disabled={!canNextPage}>Next</StyledButton>
-                <StyledButton onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>{'>>'}</StyledButton>
+            <div style={{ width: '100%' }}>
+                <div className='d-flex justify-content-between'>
+                    <div className='align-content-center'>
+                        <span>
+                            Page{' '}
+                            <strong>
+                                {pageIndex + 1} of {pageOptions.length}
+                            </strong>{' '}
+                        </span>
+                        <span>
+                            | Go to page:{' '}
+                            <input
+                                type='number'
+                                defaultValue={pageIndex + 1}
+                                onChange={e => {
+                                    const pageNumber = e.target.value ? Number(e.target.value) - 1 : 0
+                                    gotoPage(pageNumber)
+                                }}
+                                style={{ width: '50px' }}
+                            />
+                        </span>
+                    </div>
+                    <div className='align-content-center'>
+                        <select
+                            value={pageSize}
+                            onChange={e => setPageSize(Number(e.target.value))}
+                            className=' border-dark'
+                            style={{ borderColor: 'black', borderRadius: '5px' }}
+                        >
+                            {
+                                [10, 25, 50].map(pageSize => (
+                                    <option key={pageSize} value={pageSize}>
+                                        Show {pageSize}
+                                    </option>
+                                ))
+                            }
+                        </select>
+                    </div>
+                    <div>
+                        <StyledButton onClick={() => gotoPage(0)} disabled={!canPreviousPage}>{'<<'}</StyledButton>
+                        <StyledButton onClick={() => previousPage()} disabled={!canPreviousPage}>Previous</StyledButton>
+                        <StyledButton onClick={() => nextPage()} disabled={!canNextPage}>Next</StyledButton>
+                        <StyledButton onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>{'>>'}</StyledButton>
+                    </div>
+                </div>
             </div>
         </div>
     )
