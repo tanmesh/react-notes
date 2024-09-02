@@ -35,6 +35,17 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const theme = {
+  dark: {
+    primary: '#000',
+    text: '#fff'
+  },
+  light: {
+    primary: '#fff',
+    text: '#000'
+  }
+};
+
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
@@ -155,7 +166,7 @@ function App() {
   }
 
   return (
-    <ThemeProvider theme={{ mode: 'light' }}>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
       <QueryClientProvider client={queryClient}>
         <Router>
