@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-import cakeReducer from './features/cake/cakeSlice';
-import icecreamReducer from './features/icecream/icecreamSlice';
-import userReducer from './features/user/userSlice';
+import cakeReducer from '../features/cake/cakeSlice';
+import icecreamReducer from '../features/icecream/icecreamSlice';
+import userReducer from '../features/user/userSlice';
 
 /**
  * Configure the Redux store with the reducers.
