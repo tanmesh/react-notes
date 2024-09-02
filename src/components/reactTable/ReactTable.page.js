@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react'
 import { useTable } from 'react-table'
 import MOCK_DATA from './MOCK_DATA.json'
-import { COLUMNS } from './columns'
+import { GROUPED_COLUMNS } from './columns'
 import './table.css'
 
 const ReactTablePage = () => {
-    const columns = useMemo(() => COLUMNS, []) // This ensures that the columns are not re-created on every render
+    const columns = useMemo(() => GROUPED_COLUMNS, []) // This ensures that the columns are not re-created on every render
     const data = useMemo(() => MOCK_DATA, []) // This ensures that the data is not re-created on every render
 
     const tableInstance = useTable({
