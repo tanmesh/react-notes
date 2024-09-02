@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useQuery } from 'react-query'
-import { request } from '../utils/axios-utils'
-import { StyledButton } from '../styled-components/Button'
+import { request } from '../../utils/axios-utils'
+import { StyledButton } from '../../styled-components/Button'
 
 
 const fetchColors = async (pageNumber) => {

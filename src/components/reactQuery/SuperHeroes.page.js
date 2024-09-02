@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react' 
-import { request } from '../utils/axios-utils'
+import { request } from '../../utils/axios-utils'
 
 export const SuperHeroesPage = () => {
     const [isLoading, setIsLoading] = useState(true)

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { useInfiniteQuery } from 'react-query'
-import { request } from '../utils/axios-utils'
-import { FancyButton } from '../styled-components/Button'
+import { request } from '../../utils/axios-utils'
+import { FancyButton } from '../../styled-components/Button'
 
 const fetchColors = async ({ pageParam = 1 }) => {
     const response = await request({ url: `/colors?_per_page=2&_page=${pageParam}` });

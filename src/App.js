@@ -2,16 +2,16 @@ import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools"; /* Devtools for React Query */
 import HomePage from "./components/Home.page";
-import RQSuperHeroPage from "./components/RQSuperHero.page";
-import SuperHeroesPage from "./components/SuperHeroes.page";
-import RQSuperHeroesPage from "./components/RQSuperHeroes.page";
+import RQSuperHeroPage from "./components/reactQuery/RQSuperHero.page";
+import SuperHeroesPage from "./components/reactQuery/SuperHeroes.page";
+import RQSuperHeroesPage from "./components/reactQuery/RQSuperHeroes.page";
 import 'bootstrap/dist/css/bootstrap.min.css'; /* Importing Bootstrap CSS */
-import ParallelQueriesPage from "./components/ParallelQueries.page";
-import DynamicParallelQueriesPage from "./components/DynamicParallelQueries.page";
-import DependedQueriesPage from "./components/DependedQueries.page";
-import PaginatedQueriesPage from "./components/PaginatedQueries.page";
-import InfiniteQueriesPage from "./components/InfiniteQueries.page";
-import CakeShopPage from "./components/cakeShop/CakeShop.page";
+import ParallelQueriesPage from "./components/reactQuery/ParallelQueries.page";
+import DynamicParallelQueriesPage from "./components/reactQuery/DynamicParallelQueries.page";
+import DependedQueriesPage from "./components/reactQuery/DependedQueries.page";
+import PaginatedQueriesPage from "./components/reactQuery/PaginatedQueries.page";
+import InfiniteQueriesPage from "./components/reactQuery/InfiniteQueries.page";
+import CakeShopPage from "./components/redux/CakeShop.page";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 
 const queryClient = new QueryClient();

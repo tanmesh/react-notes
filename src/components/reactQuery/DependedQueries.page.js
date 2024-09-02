@@ -1,6 +1,6 @@
 import React from 'react'
 import { useQuery } from 'react-query'
-import { request } from '../utils/axios-utils'
+import { request } from '../../utils/axios-utils'
 
 /*
 * Dependent Queries are the queries that are dependent on the other queries.

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useQuery } from 'react-query'
-import { request } from '../utils/axios-utils'
+import { request } from '../../utils/axios-utils'
 
 const fetchSuperHeroes = () => {
     return request({ url: `/superheroes` });

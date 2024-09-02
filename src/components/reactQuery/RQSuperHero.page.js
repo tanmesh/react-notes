@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import { useSuperHeroData } from '../hooks/useSuperHeroData';
-import { StyledButton } from '../styled-components/Button';
+import { useSuperHeroData } from '../../hooks/useSuperHeroData';
+import { StyledButton } from '../../styled-components/Button';
 
 const RQSuperHeroPage = () => {
   const { heroId } = useParams();

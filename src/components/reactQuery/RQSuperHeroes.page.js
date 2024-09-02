@@ -1,9 +1,9 @@
 import React from "react";
-import { useSuperHeroesData, useAddSuperHeroData } from "../hooks/useSuperHeroesData";
+import { useSuperHeroesData, useAddSuperHeroData } from "../../hooks/useSuperHeroesData";
 import { Link } from "react-router-dom";
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import { DarkButton, SubmitButton } from "../styled-components/Button";
+import { DarkButton, SubmitButton } from "../../styled-components/Button";
 
 const RQSuperHeroesPage = () => {
   /*
