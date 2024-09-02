@@ -4,13 +4,23 @@ import MOCK_DATA from './MOCK_DATA.json'
 import { COLUMNS } from './columns'
 import './table.css'
 import GlobalFilter from './GlobalFilter'
+import ColumnFilter from './ColumnFilter'
 
 const FilteringTablePage = () => {
     const columns = useMemo(() => COLUMNS, [])
     const data = useMemo(() => MOCK_DATA, [])
+
+    const defaultColumn = useMemo(() => {
+        // This function returns the default column properties that are applied to every column
+        return {
+            Filter: ColumnFilter
+        }
+    }, [])
+
     const tableInstance = useTable({
         columns,
-        data
+        data,
+        defaultColumn
     },
         useFilters,
         useGlobalFilter,
