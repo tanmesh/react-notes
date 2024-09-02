@@ -19,6 +19,7 @@ import ReactTablePage from "./components/reactTable/ReactTable.page";
 import SortingTablePage from "./components/reactTable/SortingTable.page";
 import FilteringTablePage from "./components/reactTable/FilteringTable.page";
 import PaginatedTablePage from "./components/reactTable/PaginatedTable.page";
+import RowSelection from "./components/reactTable/RowSelection";
 
 const queryClient = new QueryClient();
 
@@ -118,10 +119,11 @@ function App() {
       { title: 'Sorting Table', iconLabel: '🔢', to: '/sorting-table' },
       { title: 'Filtering Table', iconLabel: '🔍', to: '/filtering-table' },
       { title: 'Paginated Table', iconLabel: '📑', to: '/paginated-table' },
+      { title: 'RowSelection', iconLabel: '🔘', to: '/row-selection' },
     ];
 
     return (
-      <div style={{ 
+      <div style={{
         transition: 'margin-left 0.3s ease-in-out',
         marginLeft: isSidebarOpen ? '240px' : '0',
       }}>
@@ -143,6 +145,7 @@ function App() {
               <Route path="/sorting-table" element={<SortingTablePage />} />
               <Route path="/filtering-table" element={<FilteringTablePage />} />
               <Route path="/paginated-table" element={<PaginatedTablePage />} />
+              <Route path="/row-selection" element={<RowSelection />} />
               <Route path="/" element={<HomePage />} />
             </Routes>
           </div>
