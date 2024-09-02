@@ -45,6 +45,10 @@
 - The entire applicate's state is split into multiple slices, each slice is a reducer.
 
 
+## React Table 
+- **Its a utility and not a component**
+- It is a collection of hooks for building powerful tables and data grid experiences. These hooks are lightweight, composable, and ultra-extensible. They do not render any markup or styles for you
+
 ## Topics 
 - <input type="checkbox" disabled /> React Fundamentals and Advanced Topics
 - <input type="checkbox" disabled /> React Hooks
