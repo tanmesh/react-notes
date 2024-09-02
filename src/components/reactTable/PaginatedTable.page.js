@@ -11,7 +11,8 @@ const PaginatedTablePage = () => {
 
     const tableInstance = useTable({
         columns,
-        data
+        data,
+        initialState: { pageIndex: 0 } // This is used to set the initial page index. If set to x, the table will start at page x+1
     },
         usePagination)
 
@@ -25,6 +26,8 @@ const PaginatedTablePage = () => {
         canNextPage, // A boolean value indicating if there is a next page
         canPreviousPage, // A boolean value indicating if there is a previous page
         pageOptions, // An array of all the page numbers
+        gotoPage, // Helper function to navigate to a specific page
+        pageCount, // The total number of pages
         state,
         prepareRow
     } = tableInstance
@@ -72,8 +75,22 @@ const PaginatedTablePage = () => {
                         {pageIndex + 1} of {pageOptions.length}
                     </strong>{' '}
                 </span>
+                <span>
+                    | Go to page:{' '}
+                    <input
+                        type='number'
+                        defaultValue={pageIndex + 1}
+                        onChange={e => {
+                            const pageNumber = e.target.value ? Number(e.target.value) - 1 : 0
+                            gotoPage(pageNumber)
+                        }}
+                        style={{ width: '50px' }}
+                    />
+                </span>
+                <StyledButton onClick={() => gotoPage(0)} disabled={!canPreviousPage}>{'<<'}</StyledButton>
                 <StyledButton onClick={() => previousPage()} disabled={!canPreviousPage}>Previous</StyledButton>
                 <StyledButton onClick={() => nextPage()} disabled={!canNextPage}>Next</StyledButton>
+                <StyledButton onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>{'>>'}</StyledButton>
             </div>
         </div>
     )

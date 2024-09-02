@@ -10,7 +10,7 @@ export const StyledButton = styled.button`
     color: ${(props) => props.variant === 'outline' ? '#04AA6D' : '#FFF'};
     border: 2px solid transparent;
     border-radius: 5px;
-    padding: 5px;
+    padding: 1px;
     margin: 10px;
     cursor: pointer;
     &:disabled {
