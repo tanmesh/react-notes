@@ -15,6 +15,7 @@ import CakeShopPage from "./components/redux/CakeShop.page";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import ReactTablePage from "./components/reactTable/ReactTable.page";
 import SortingTablePage from "./components/reactTable/SortingTable.page";
+import FilteringTablePage from "./components/reactTable/FilteringTable.page";
 
 const queryClient = new QueryClient();
 
@@ -75,6 +76,9 @@ function App() {
             <li>
               <Link to="/sorting-table">Sorting Table</Link>
             </li>
+            <li>
+              <Link to="/filtering-table">Filtering Table</Link>
+            </li>
           </ul>
         </nav>
         <Routes>
@@ -87,9 +91,12 @@ function App() {
           <Route path="/rq-dependent-queries" element={<DependedQueriesPage email='tanmesh@example.com' />} />
           <Route path="/rq-paginated-queries" element={<PaginatedQueriesPage />} />
           <Route path="/rq-infinite-queries" element={<InfiniteQueriesPage />} />
+          {/* React Redux */}
           <Route path="/rtk-cake-shop" element={<CakeShopPage />} />
+          {/* React Table */}
           <Route path="/table" element={<ReactTablePage />} />
           <Route path="/sorting-table" element={<SortingTablePage />} />
+          <Route path="/filtering-table" element={<FilteringTablePage />} />
           <Route path="/" element={<HomePage />} />
         </Routes>
       </div>
