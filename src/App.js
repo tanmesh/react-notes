@@ -23,6 +23,7 @@ import RowSelection from "./components/reactTable/RowSelection";
 import ColumnOrder from "./components/reactTable/ColumnOrder";
 import ColumnHiding from "./components/reactTable/ColumnHiding";
 import StickyTable from "./components/reactTable/StickyTable";
+import allTasks from "../src/tasks.json";
 
 const queryClient = new QueryClient();
 
@@ -49,7 +50,23 @@ const theme = {
   }
 };
 
+export const extractTasks = (obj) => {
+  return Object.entries(obj).flatMap(([key, value]) => {
+    if (Array.isArray(value)) {
+      return value.map(item => item);
+    } else if (typeof value === 'object' && value !== null) {
+      // Recursively extract tasks from nested objects
+      return extractTasks(value);
+    } else {
+      // Handle cases where the value is not an array or object
+      return [{ title: key, description: value }];
+    }
+  });
+};
+
 function App() {
+  const tasks = extractTasks(allTasks);
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const SidebarToggle = () => (
@@ -119,25 +136,14 @@ function App() {
   );
 
   const AppContent = () => {
-    const tasks = [
-      { title: 'Home', iconLabel: '🏠', to: '/' },
-      { title: 'SuperHeroes', iconLabel: '🦸', to: '/superheroes' },
-      { title: 'RQ SuperHeroes', iconLabel: '🚀', to: '/rq-superheroes' },
-      { title: 'Parallel Queries', iconLabel: '🔀', to: '/rq-parallel-queries' },
-      { title: 'Dynamic Parallel Queries', iconLabel: '🔄', to: '/rq-dynamic-parallel-queries' },
-      { title: 'Dependent Queries', iconLabel: '🔗', to: '/rq-dependent-queries' },
-      { title: 'Paginated Queries', iconLabel: '📄', to: '/rq-paginated-queries' },
-      { title: 'Infinite Queries', iconLabel: '♾️', to: '/rq-infinite-queries' },
-      { title: 'Using Redux', iconLabel: '🔄', to: '/rtk-cake-shop' },
-      { title: 'React Table', iconLabel: '📊', to: '/table' },
-      { title: 'Sorting Table', iconLabel: '🔢', to: '/sorting-table' },
-      { title: 'Filtering Table', iconLabel: '🔍', to: '/filtering-table' },
-      { title: 'Paginated Table', iconLabel: '📑', to: '/paginated-table' },
-      { title: 'RowSelection', iconLabel: '🔘', to: '/row-selection' },
-      { title: 'Column Order', iconLabel: '🔀', to: '/column-order' },
-      { title: 'Column Hiding', iconLabel: '👁️', to: '/column-hiding' },
-      { title: 'Sticky Table', iconLabel: '📌', to: '/sticky-table' },
-    ];
+    const home = {
+      title: "Home",
+      description: "",
+      to: "/",
+      iconLabel: "🏠",
+    };
+
+    const updatedTasks = [home, ...tasks];
 
     return (
       <div style={{
@@ -145,9 +151,9 @@ function App() {
         marginLeft: isSidebarOpen ? '240px' : '0',
       }}>
         <SidebarToggle />
-        <Sidebar tasks={tasks} />
+        <Sidebar tasks={updatedTasks} />
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '2rem' }}>
-          <div className='d-flex flex-column align-items-center'>
+          <div className=''>
             <Routes>
               <Route path="/superheroes" element={<SuperHeroesPage />} />
               <Route path="/rq-superheroes" element={<RQSuperHeroesPage />} />

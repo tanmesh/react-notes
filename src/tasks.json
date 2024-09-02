@@ -1,0 +1,110 @@
+[
+  {
+    "React Query": [
+      {
+        "title": "SuperHeroes",
+        "iconLabel": "🦸",
+        "to": "/superheroes",
+        "description": "Explore a list of superheroes fetched from an API."
+      },
+      {
+        "title": "RQ SuperHeroes",
+        "iconLabel": "🚀",
+        "to": "/rq-superheroes",
+        "description": "View superheroes using React Query for data fetching and caching."
+      },
+      {
+        "title": "Parallel Queries",
+        "iconLabel": "🔀",
+        "to": "/rq-parallel-queries",
+        "description": "Learn how to execute multiple queries in parallel using React Query."
+      },
+      {
+        "title": "Dynamic Parallel Queries",
+        "iconLabel": "🔄",
+        "to": "/rq-dynamic-parallel-queries",
+        "description": "Dynamically execute parallel queries based on input parameters."
+      },
+      {
+        "title": "Dependent Queries",
+        "iconLabel": "🔗",
+        "to": "/rq-dependent-queries",
+        "description": "Execute queries that depend on the results of previous queries."
+      },
+      {
+        "title": "Paginated Queries",
+        "iconLabel": "📄",
+        "to": "/rq-paginated-queries",
+        "description": "Fetch data in a paginated format to handle large datasets efficiently."
+      },
+      {
+        "title": "Infinite Queries",
+        "iconLabel": "♾️",
+        "to": "/rq-infinite-queries",
+        "description": "Implement infinite scrolling with data fetched using React Query."
+      }
+    ]
+  },
+  {
+    "React Redux": [
+      {
+        "title": "Using Redux",
+        "iconLabel": "🔄",
+        "to": "/rtk-cake-shop",
+        "description": "Manage state in a Redux-powered cake shop application."
+      }
+    ]
+  },
+  {
+    "React Table": [
+      {
+        "title": "React Table",
+        "iconLabel": "📊",
+        "to": "/table",
+        "description": "Display and manipulate tabular data using React Table."
+      },
+      {
+        "title": "Sorting Table",
+        "iconLabel": "🔢",
+        "to": "/sorting-table",
+        "description": "Learn how to implement sorting functionality in tables."
+      },
+      {
+        "title": "Filtering Table",
+        "iconLabel": "🔍",
+        "to": "/filtering-table",
+        "description": "Apply filters to table data for easier navigation and searching."
+      },
+      {
+        "title": "Paginated Table",
+        "iconLabel": "📑",
+        "to": "/paginated-table",
+        "description": "Paginate table data to handle large datasets effectively."
+      },
+      {
+        "title": "Row Selection",
+        "iconLabel": "🔘",
+        "to": "/row-selection",
+        "description": "Implement row selection in tables for bulk actions or detailed views."
+      },
+      {
+        "title": "Column Order",
+        "iconLabel": "🔀",
+        "to": "/column-order",
+        "description": "Allow users to reorder columns in the table dynamically."
+      },
+      {
+        "title": "Column Hiding",
+        "iconLabel": "👁️",
+        "to": "/column-hiding",
+        "description": "Give users the ability to hide or show columns in the table."
+      },
+      {
+        "title": "Sticky Table",
+        "iconLabel": "📌",
+        "to": "/sticky-table",
+        "description": "Create tables with sticky headers and columns for better readability."
+      }
+    ]
+  }
+]
