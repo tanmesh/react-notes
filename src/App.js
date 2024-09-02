@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools"; /* Devtools for React Query */
+import { ReactQueryDevtools } from "react-query/devtools";
+import { ChevronRight, ChevronLeft } from "lucide-react";
 import HomePage from "./components/Home.page";
 import RQSuperHeroPage from "./components/reactQuery/RQSuperHero.page";
 import SuperHeroesPage from "./components/reactQuery/SuperHeroes.page";
 import RQSuperHeroesPage from "./components/reactQuery/RQSuperHeroes.page";
-import 'bootstrap/dist/css/bootstrap.min.css'; /* Importing Bootstrap CSS */
+import 'bootstrap/dist/css/bootstrap.min.css';
 import ParallelQueriesPage from "./components/reactQuery/ParallelQueries.page";
 import DynamicParallelQueriesPage from "./components/reactQuery/DynamicParallelQueries.page";
 import DependedQueriesPage from "./components/reactQuery/DependedQueries.page";
@@ -21,102 +22,86 @@ import PaginatedTablePage from "./components/reactTable/PaginatedTable.page";
 
 const queryClient = new QueryClient();
 
+const GlobalStyle = createGlobalStyle`
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: 'white';
+    margin: 0;
+    padding: 0;
+  }
+  button {
+    font-family: 'Inter', sans-serif;
+  }
+`;
+
 function App() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
-  const theme = {
-    dark: {
-      primary: '#000',
-      text: '#fff'
-    },
-    light: {
-      primary: '#fff',
-      text: '#000'
-    }
-  };
-
-  const GlobalStyle = createGlobalStyle`
-    button {
-      font-family: 'Roboto';
-    }
-  `;
-
-
-  const Header = ({ name }) => (
-    <header style={{ marginBottom: '2rem' }}>
-      <h1 style={{
-        fontSize: '2.25rem',
-        fontWeight: 'bold',
-        marginBottom: '0.5rem',
-        display: 'inline-block'
-      }}>
-        <span style={{
-          background: 'linear-gradient(90deg, #4a90e2, #9b59b6)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
-          color: 'transparent'
-        }}>
-          Hello,
-        </span>
-        <span style={{
-          background: 'linear-gradient(90deg, #9b59b6, #9b59b6)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
-          color: 'transparent',
-          marginLeft: '0.5rem'
-        }}>
-          {name}
-        </span>
-      </h1>
-      <p style={{ fontSize: '1.5rem', color: '#6b7280' }}>How can I help you today?</p>
-    </header>
+  const SidebarToggle = () => (
+    <button
+      onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+      style={{
+        position: 'fixed',
+        left: isSidebarOpen ? '240px' : '0',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        zIndex: 1000,
+        background: '#4ECDC4',
+        border: 'none',
+        borderRadius: '0 8px 8px 0',
+        padding: '1rem 0.5rem',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        cursor: 'pointer',
+        transition: 'left 0.3s ease-in-out',
+      }}
+    >
+      {isSidebarOpen ? <ChevronLeft color="white" size={24} /> : <ChevronRight color="white" size={24} />}
+    </button>
   );
 
-  const TaskCard = ({ title, iconLabel, to }) => {
-    const [isHovered, setIsHovered] = useState(false);
-
-    const cardStyle = {
-      backgroundColor: '#f3f4f6',
-      borderRadius: '0.5rem',
-      padding: '1.5rem',
-      boxShadow: isHovered
-        ? '0 4px 6px rgba(0, 0, 0, 0.1)'
-        : '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'space-between',
-      minHeight: '10px',
-      transition: 'transform 0.2s, box-shadow 0.2s',
-      transform: isHovered ? 'translateY(-5px)' : 'translateY(0)',
-    };
-
-    return (
-      <Link
-        to={to}
-        style={{ textDecoration: 'none', color: 'inherit' }}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        <div style={cardStyle}>
-          <h3 style={{ fontSize: '1rem', fontWeight: '600', marginBottom: '0.5rem' }}>{title}</h3>
-          <div style={{
-            alignSelf: 'flex-end',
-            backgroundColor: '#e5e7eb',
-            borderRadius: '9999px',
-            width: '2rem',
-            height: '2rem',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: '1rem'
-          }}>
-            {iconLabel}
-          </div>
-        </div>
-      </Link>
-    );
-  };
+  const Sidebar = ({ tasks }) => (
+    <div style={{
+      position: 'fixed',
+      left: isSidebarOpen ? '0' : '-240px',
+      top: 0,
+      bottom: 0,
+      width: '240px',
+      background: 'white',
+      boxShadow: '2px 0 5px rgba(0, 0, 0, 0.1)',
+      transition: 'left 0.3s ease-in-out',
+      overflowY: 'auto',
+      zIndex: 999,
+    }}>
+      <div style={{ padding: '2rem 1rem' }}>
+        <h2 style={{ fontSize: '1.5rem', fontWeight: '600', marginBottom: '1.5rem', color: '#333' }}>
+          Quick Access
+        </h2>
+        {tasks.map((task, index) => (
+          <Link
+            key={index}
+            to={task.to}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              padding: '0.75rem 1rem',
+              color: '#333',
+              textDecoration: 'none',
+              borderRadius: '8px',
+              marginBottom: '0.5rem',
+              transition: 'background-color 0.2s ease',
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f0f2f5'}
+            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+          >
+            <span style={{ marginRight: '1rem', fontSize: '1.25rem' }}>{task.iconLabel}</span>
+            {task.title}
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
 
   const AppContent = () => {
     const tasks = [
@@ -136,48 +121,38 @@ function App() {
     ];
 
     return (
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '1.5rem' }}>
-        <Header name="Tanmesh" />
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-          gap: '1.5rem'
-        }}>
-          {tasks.map((task, index) => (
-            <TaskCard key={index} title={task.title} iconLabel={task.iconLabel} to={task.to} />
-          ))}
-        </div>
-        <hr style={{ margin: '2rem 0' }} />
-        <div className='d-flex flex-column align-items-center'>
-          <Routes>
-            <Route path="/superheroes" element={<SuperHeroesPage />} />
-            <Route path="/rq-superheroes" element={<RQSuperHeroesPage />} />
-            <Route path="/rq-superhero/:heroId" element={<RQSuperHeroPage />} />
-            <Route path="/rq-parallel-queries" element={<ParallelQueriesPage />} />
-            {/* Lets mimic a scenario, where the User is passing dynamic list of heroIds */}
-            <Route path="/rq-dynamic-parallel-queries" element={<DynamicParallelQueriesPage heroIds={[1, 3]} />} />
-            <Route path="/rq-dependent-queries" element={<DependedQueriesPage email='tanmesh@example.com' />} />
-            <Route path="/rq-paginated-queries" element={<PaginatedQueriesPage />} />
-            <Route path="/rq-infinite-queries" element={<InfiniteQueriesPage />} />
-            {/* React Redux */}
-            <Route path="/rtk-cake-shop" element={<CakeShopPage />} />
-            {/* React Table */}
-            <Route path="/table" element={<ReactTablePage />} />
-            <Route path="/sorting-table" element={<SortingTablePage />} />
-            <Route path="/filtering-table" element={<FilteringTablePage />} />
-            <Route path="/paginated-table" element={<PaginatedTablePage />} />
-            <Route path="/" element={<HomePage />} />
-          </Routes>
+      <div style={{ 
+        transition: 'margin-left 0.3s ease-in-out',
+        marginLeft: isSidebarOpen ? '240px' : '0',
+      }}>
+        <SidebarToggle />
+        <Sidebar tasks={tasks} />
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '2rem' }}>
+          <div className='d-flex flex-column align-items-center'>
+            <Routes>
+              <Route path="/superheroes" element={<SuperHeroesPage />} />
+              <Route path="/rq-superheroes" element={<RQSuperHeroesPage />} />
+              <Route path="/rq-superhero/:heroId" element={<RQSuperHeroPage />} />
+              <Route path="/rq-parallel-queries" element={<ParallelQueriesPage />} />
+              <Route path="/rq-dynamic-parallel-queries" element={<DynamicParallelQueriesPage heroIds={[1, 3]} />} />
+              <Route path="/rq-dependent-queries" element={<DependedQueriesPage email='tanmesh@example.com' />} />
+              <Route path="/rq-paginated-queries" element={<PaginatedQueriesPage />} />
+              <Route path="/rq-infinite-queries" element={<InfiniteQueriesPage />} />
+              <Route path="/rtk-cake-shop" element={<CakeShopPage />} />
+              <Route path="/table" element={<ReactTablePage />} />
+              <Route path="/sorting-table" element={<SortingTablePage />} />
+              <Route path="/filtering-table" element={<FilteringTablePage />} />
+              <Route path="/paginated-table" element={<PaginatedTablePage />} />
+              <Route path="/" element={<HomePage />} />
+            </Routes>
+          </div>
         </div>
       </div>
     );
   }
 
-  /**
-   * Adding queryClient instance will give access to every hook and methods that React Query provides
-   */
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={{ mode: 'light' }}>
       <GlobalStyle />
       <QueryClientProvider client={queryClient}>
         <Router>
