@@ -5,7 +5,7 @@ import UserView from './features/user/UserView'
 
 const CakeShopPage = () => {
   return (
-    <div className='d-flex flex-column align-items-center'>
+    <div >
       <h1>Welcome to Cake Shop</h1>
       <CakeView />
       <IcecreamView />

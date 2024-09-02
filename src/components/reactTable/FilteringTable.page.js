@@ -40,7 +40,7 @@ const FilteringTablePage = () => {
 
     return (
         <div className='d-flex flex-column align-items-center'>
-            <h1>React Table</h1>
+            <h1>Filtering Table</h1>
             <>
                 <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
                 <table {...getTableProps()}>
