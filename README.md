@@ -48,6 +48,12 @@
 ## React Table 
 - **Its a utility and not a component**
 - It is a collection of hooks for building powerful tables and data grid experiences. These hooks are lightweight, composable, and ultra-extensible. They do not render any markup or styles for you
+- todo:
+    - Grouping
+    - Inline row editing
+    - Row drag and drop
+    - column resizing
+    - react table + MUI
 
 ## Topics 
 - <input type="checkbox" disabled /> React Fundamentals and Advanced Topics
@@ -56,7 +62,7 @@
 - <input type="checkbox" disabled /> React Formik
 - <input type="checkbox" disabled /> React Storybook
 - <input type="checkbox" disabled /> React Render
-- <input type="checkbox" disabled /> React Table
+- <input type="checkbox" disabled checked /> React Table
 - <input type="checkbox" disabled /> React TypeScript
 - <input type="checkbox" disabled checked /> React Query
 - <input type="checkbox" disabled checked /> React Styled Components

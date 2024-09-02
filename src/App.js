@@ -22,6 +22,7 @@ import PaginatedTablePage from "./components/reactTable/PaginatedTable.page";
 import RowSelection from "./components/reactTable/RowSelection";
 import ColumnOrder from "./components/reactTable/ColumnOrder";
 import ColumnHiding from "./components/reactTable/ColumnHiding";
+import StickyTable from "./components/reactTable/StickyTable";
 
 const queryClient = new QueryClient();
 
@@ -135,6 +136,7 @@ function App() {
       { title: 'RowSelection', iconLabel: '🔘', to: '/row-selection' },
       { title: 'Column Order', iconLabel: '🔀', to: '/column-order' },
       { title: 'Column Hiding', iconLabel: '👁️', to: '/column-hiding' },
+      { title: 'Sticky Table', iconLabel: '📌', to: '/sticky-table' },
     ];
 
     return (
@@ -163,6 +165,7 @@ function App() {
               <Route path="/row-selection" element={<RowSelection />} />
               <Route path="/column-order" element={<ColumnOrder />} />
               <Route path="/column-hiding" element={<ColumnHiding />} />
+              <Route path="/sticky-table" element={<StickyTable />} />
               <Route path="/" element={<HomePage />} />
             </Routes>
           </div>
