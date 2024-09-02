@@ -10,7 +10,8 @@ export const COLUMNS = [
         Header: 'Id',
         Footer: 'Id',
         accessor: 'id', // 'accessor' is used to associate each column with the row data
-        Filter: ColumnFilter
+        Filter: ColumnFilter,
+        disableFilters: true // This property is used to disable the filter for this column
     },
     {
         Header: 'First Name',
