@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# React Notes
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Commands 
 
-## Available Scripts
+|  |  |
+|----------|----------|
+| Creating new app | `npx create-react-app <file_name>` |
+| Setting different port | Go to package.json and update the command, similar to :-<br> `"start": "PORT=3001 react-scripts start",`|
+| Setting json server | - Use `npm i json-server` <br>- Set `server-json` in package.json with `"json-server --watch db.json --port 3004"` <br>- Run using `npm run server-json` <br> - Endpoint -- [http://localhost:3004/superheroes](http://localhost:3004/superheroes) |
+| Setting up react router | - Use `npm i react-router-dom` |
+| Setting up react query |  - Use `npm i react-query` |
+| <> | <> |
 
-In the project directory, you can run:
 
-### `npm start`
+## React Query 
+- What is it ?
+    - Lib for fetching data in a React application.
+- Why we need it ? 
+    - Despite having existing state management lib like useState and useEffect, which are great while working with Client state (synchronous) but are not great while working Server state (asynchronous).  
+    - Complex requirements like caching, deduping multiple requests for same data, updating stale data in background, performace optimization, etc can be easily handed using React Query library.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## React Styled Components
+- What are the benefits / features of using this ? 
+- What is polymorphic props ? 
+    - a single component with polymorphic props can handle multiple scenarios, leading to a more consistent and predictable codebase.
 
-### `npm test`
+## Redux 
+- What is it ? 
+    - Predictable state container for JS apps to manage global state 
+- Redux Toolkit is lib for efficient redux development 
+- React-redux is a lib that provides bindings to use React and Redux (Toolkit) together in an application 
+- Three core concepts : 
+    - <img src="./images/image.png" alt="alt text" style="width: 40%;">
+    - Store : holds the state of the application.
+    - Action : describes what happend in the application. 
+    - Reducer : handles the action & describe how to update the state.
+- Three principles : 
+    1. **The global state of the application is stored as an object inside a single store**
+    2. **The only way to change the state is to dispatch an action, an object that describes what happened**
+    3. **To specify how the state tree is updated based on action, you write pure reducers**
+        - Pure reducers are the functions which takes previousState and action, and returns a newState. 
+        - They should not be updating the previous state.
+- <img src="./images/image-1.png" alt="alt text" style="width: 40%;">
+- The entire applicate's state is split into multiple slices, each slice is a reducer.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Topics 
+- <input type="checkbox" disabled /> React Fundamentals and Advanced Topics
+- <input type="checkbox" disabled /> React Hooks
+- <input type="checkbox" disabled /> React Router
+- <input type="checkbox" disabled /> React Formik
+- <input type="checkbox" disabled /> React Storybook
+- <input type="checkbox" disabled /> React Render
+- <input type="checkbox" disabled /> React Table
+- <input type="checkbox" disabled /> React TypeScript
+- <input type="checkbox" disabled checked /> React Query
+- <input type="checkbox" disabled checked /> React Styled Components
+- <input type="checkbox" disabled checked /> React Redux
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
